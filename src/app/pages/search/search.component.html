@@ -1,0 +1,21 @@
+<div class="search-container">
+  <mat-card>
+    <form class="form-body">
+      <mat-form-field class="search-form-field" appearance="outline">
+        <mat-label>搜索音乐</mat-label>
+        <input type="text" placeholder="搜索音乐、歌手" matInput (keyup)="search($event)" [matAutocomplete]="auto">
+        <mat-icon matSuffix>search</mat-icon>
+        <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption (optionSelected)="optionSelected($event)">
+          <mat-option *ngFor="let suggest of suggest$ | async" [value]="suggest">
+            <mat-icon>search</mat-icon>  {{suggest}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+    <h3>热门搜索</h3>
+    <div>
+      <button mat-button *ngFor="let word of hotWords" (click)="hotWordClick($event, word)">{{word}}</button>
+    </div>
+  </mat-card>
+  <app-mtable *ngIf="tableData" type="'musiclist'" [tableData]="tableData" [total]="total"></app-mtable>
+</div>
