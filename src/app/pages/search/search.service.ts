@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class SearchService {
-  baseUrl = 'http://localhost:3000';
+  baseUrl = 'http://192.168.1.151:3000';
 
   constructor(private http: HttpClient) { }
 

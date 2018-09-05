@@ -12,9 +12,11 @@
         </mat-autocomplete>
       </mat-form-field>
     </form>
-    <h3>热门搜索</h3>
-    <div>
-      <button mat-button *ngFor="let word of hotWords" (click)="hotWordClick($event, word)">{{word}}</button>
+    <div *ngIf="!tableData">
+      <h3>热门搜索</h3>
+      <div>
+        <button mat-button *ngFor="let word of hotWords" (click)="hotWordClick($event, word)">{{word}}</button>
+      </div>
     </div>
   </mat-card>
   <app-mtable *ngIf="tableData" type="'musiclist'" [tableData]="tableData" [total]="total"></app-mtable>
