@@ -32,6 +32,7 @@ import { SongsDurationPipe } from './pipes/songs-duration/songs-duration.pipe';
     AppComponent,
     SearchComponent,
     MtableComponent,
+
     SongsDurationPipe
   ],
   imports: [

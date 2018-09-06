@@ -3,8 +3,11 @@
     <form class="form-body">
       <mat-form-field class="search-form-field" appearance="outline">
         <mat-label>搜索音乐</mat-label>
-        <input type="text" placeholder="搜索音乐、歌手" matInput (keyup)="search($event)" [matAutocomplete]="auto">
-        <mat-icon matSuffix>search</mat-icon>
+        <mat-icon matPrefix>search</mat-icon>
+        <input type="text" placeholder="搜索音乐、歌手" [(value)]="searchInput" matInput (keyup)="search($event)" [matAutocomplete]="auto">
+        <button mat-button *ngIf="searchInput" matSuffix mat-icon-button aria-label="Clear" (click)="searchInput=''">
+          <mat-icon>close</mat-icon>
+        </button>
         <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption (optionSelected)="optionSelected($event)">
           <mat-option *ngFor="let suggest of suggest$ | async" [value]="suggest">
             <mat-icon>search</mat-icon>  {{suggest}}
@@ -12,7 +15,7 @@
         </mat-autocomplete>
       </mat-form-field>
     </form>
-    <div *ngIf="!tableData">
+    <div *ngIf="!searchInput">
       <h3>热门搜索</h3>
       <div>
         <button mat-button *ngFor="let word of hotWords" (click)="hotWordClick($event, word)">{{word}}</button>

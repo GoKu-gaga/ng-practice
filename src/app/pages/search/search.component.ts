@@ -18,8 +18,7 @@ export class SearchComponent implements OnInit {
   tableData: any[];
   total: number;
 
-  tableColumns: [{ key: 'id', value: 'id' }, { key: 'name', value: '歌名' }];
-  displayedColumns = ['id', 'name'];
+  searchInput = '';
 
   constructor(private service: SearchService) { }
 
@@ -55,6 +54,7 @@ export class SearchComponent implements OnInit {
   }
 
   hotWordClick(event: any, word: string) {
+    this.searchInput = word;
     this.doSearch(word);
   }
 
